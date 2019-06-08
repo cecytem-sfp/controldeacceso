@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/reader', function () {
+    return view('reader');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
