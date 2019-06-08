@@ -83,8 +83,8 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
-                <div class="links">
+				{!! QrCode::size(350)->generate('HOLA CECYTEM ESTA ES LA CLASE DE EMPRENDEDORES !!') !!}               
+				<div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

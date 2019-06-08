@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/reader', function () { 
+    return view('reader');
+});
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users/list', 'UsersController@listUsers')->name('userslist');
