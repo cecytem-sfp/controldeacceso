@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('home');
     }
+	public function registration(Request $request){
+		$validator = validator::make($request,[
+			'id' => 'required|exist:users',
+			]
+		);
+		if ($validator->fails()){
+			return json_encode(['status' -> false]);
+		}
+		
+		$asistencia = new Asistencia;
+		
+		
+		$asistencia->hora_registro = date("Y-m-d'h:i:s");
+		$asistencia->id  = $request->get('id');
+		
+		$asistencia->save();
+		
+	return response()->json{[´status´ => true]};
+		}
+
 }

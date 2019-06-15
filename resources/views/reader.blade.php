@@ -23,7 +23,7 @@
                         jQuery(document).ready(function(){
                             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
                             scanner.addListener('scan', function (content) {
-                                alert(content);
+                                saveRegister(content);
                             });
 
                             Instascan.Camera.getCameras().then(function (cameras) {
@@ -39,7 +39,25 @@
                                 console.error(e);
                             });
                         });
+						function saveRegister(data){
+							var values = data.split('|');
+							$.ajaxSetup({
+								headers: {'X-CSRF-TOKEN': $('#csrf_token').val()}
+						})
+						$.ajax(
+								{
+									url: '{{ url('/registration') }}',
+									type: 'post',
+									dataType: 'json',
+									data: {id : values[0]}
+								}
+							).done(function(data){
+								console.log(data);
+								alert(data);
+							});
+						}
                     </script>
+					<input id="csrf_token" type="hidden" value="{{csrf_token()}}" />
                 </div>
             </div>
         </div>

@@ -30,4 +30,5 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/user/{id}', 'UsersController@userDetails')
       ->name('userdetails');
+	Route::post('/registration' , 'HomeController@registration');
 });
