@@ -30,7 +30,7 @@
                   </div>
                   <div class="row">
                       <div class="colg">
-                          {!! QrCode::size(350)->generate($user->no_control . '|' . $user->name) !!}
+                          {!! QrCode::size(350)->generate($user->id . '|' .$user->no_control . '|' . $user->name) !!}
                       </div>
                   </div>
 

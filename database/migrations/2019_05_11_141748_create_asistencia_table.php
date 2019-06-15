@@ -13,7 +13,7 @@ class CreateAsistenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencia', function (Blueprint $table) {
+        Schema::create('asistencias', function (Blueprint $table) {
             $table->bigIncrements('id');
 			$table->bigInteger('id_user'); 
 			$table->dateTime('hora_registro');
@@ -28,6 +28,6 @@ class CreateAsistenciaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencia');
+        Schema::dropIfExists('asistencias');
     }
 }
