@@ -141,3 +141,27 @@
     </div>
 </div>
 @endsection
+
+
+        ));
+    ));
+	
+	function saveRegister(data){
+		var values = data.split ('|');
+		$.ajaxSetup({
+			headers: {'x-CSAF-TOKEN': $('meta[name="csfr-token"]').attr('('content')}
+		})
+		$.ajax(
+		{
+			url: '/registration',
+			type; 'post',
+			dataType: 'json',
+			data: {id: values[0]}
+		}
+	}.done(function(data){
+		console.log(data);
+		alert(data);
+	));
+	}
+</script>
+div>
