@@ -15,6 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/reader', function () {
+    return view('reader');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/users/list', 'UsersController@listUsers')
+      ->name('userslist');
+
+
+    Route::get('/user/{id}', 'UsersController@userDetails')
+      ->name('userdetails');
+});
