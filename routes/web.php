@@ -26,10 +26,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/users/list', 'UsersController@listUsers')
       ->name('userslist');
-
-
+	  Route::get('/notificaciones',  'notificationController@listNotifications');
+	  
+	Route::post('/registration', 'HomeController@registration');
+	
+	
+	Route::get('/notificaciones/add', function (){
+		return view('notificacionesform');
+	});
     Route::get('/user/{id}', 'UsersController@userDetails')
       ->name('userdetails');
 	  
-	Route::post('/registration', 'HomeController@registration');
 });
