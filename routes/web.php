@@ -32,4 +32,9 @@ Route::group(['middleware' => 'auth'], function(){
       ->name('userdetails');
 	  
 	Route::post('/registration', 'HomeController@registration');
+	
+	Route::get('/notifications','Notifications@listNotifications');
+	
+	Route::post('/notification/add', function (){
+		return view('notificationForm');
 });
