@@ -58,7 +58,11 @@
                                     <a class="dropdown-item" href="{{ url('/users/list') }}">
                                         {{ __('Lista de Usuarios') }}
                                     </a>
-                                    
+
+                                    <a class="dropdown-item" href="{{ url('/notifications') }}">
+                                        {{ __('Notificaciones') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
