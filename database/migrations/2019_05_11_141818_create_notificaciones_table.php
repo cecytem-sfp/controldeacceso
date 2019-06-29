@@ -15,12 +15,13 @@ class CreateNotificacionesTable extends Migration
     {
         Schema::create('notificaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->string('texto');
+			$table->string('title');
+			$table->string('description');
+			$table->integer('type');
+			$table->bigInteger('notify_to');
 			$table->bigInteger('owner');
-			$table->bigInteger('group');
-			$table->bigInteger('receiver');
-			$table->dateTime('fecha');
-			$table->integer('tipo');
+			$table->dateTime('date');
+			$table->dateTime('expire_at');
 			
            
         });

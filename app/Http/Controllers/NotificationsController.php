@@ -12,4 +12,8 @@ class NotificationsController extends Controller
 
         return view('notification', [ 'notifications' => $notifications]);
       }
+	  
+	public funtion saveNotification(resquet $resquest){
+		$data = $resquest->all();
+		dd($data);
 }
