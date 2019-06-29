@@ -12,4 +12,9 @@ class notificationController extends Controller
 
       return view('notificaciones', [ 'notifications' => $notifications]);
     }
+	public function SaveNotification(Request $request){
+		$data = $request->all();
+
+        dd($data);
+    }
 }
