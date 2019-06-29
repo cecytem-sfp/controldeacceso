@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Notificaciones') }}</div>
+                <div class="card-header">{{ __('Notificaciones') }} <a class="btn btn-success" href="{{ url('/notification/add')}}">Agregar</a> </div>
 
                 <div class="card-body">
                     @forelse($notifications as $notification)

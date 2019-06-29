@@ -12,4 +12,18 @@ class NotificationsController extends Controller
 
         return view('notification', [ 'notifications' => $notifications]);
       }
+	  public function saveNotification(Request $request){
+		  $data=$request->all();
+		  
+		  $validator = Validator::make($data,[
+            'title'=>['required', 'string'],
+		    'description'=>['required', 'string'],
+			'type'=>['required', 'integer'],
+			'notify_to'=>['required', 'bigInteger'],
+			'owner'=>['required', 'bigInteger'],
+			'date'=>['required', 'dateTime'],
+			'expire_at'=>['required', 'dateTime']
+			 ]);
+		  }
+	  
 }

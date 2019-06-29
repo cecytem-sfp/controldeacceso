@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Agregar Notificacion') }}</div>
+                <div class="card-header">{{ __('Agregar Notificacion') }} </div> 
 
                 <div class="card-body">
                     <form action="{{ url('/notification/save') }}" method="post">
@@ -34,7 +34,9 @@
                             <input type="text" class="form-control" name="expire_at" id="expire_at">
                         </div>
                             <button type="submit"class="btn btn-success" >{{ __("Guardar") }}</button>
-                        </div>
+							
+                       </div>
+					
                     </form>
                 </div>
             </div>
