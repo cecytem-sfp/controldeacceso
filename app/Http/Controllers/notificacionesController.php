@@ -13,4 +13,9 @@ class notificacionesController extends Controller
 
       return view('notificaciones', [ 'notificaciones' => $notificaciones]);
     }
+	public function savenotificaciones(Request $request){
+		$data = $request->all();
+		
+		dd($data);
+	}
 }

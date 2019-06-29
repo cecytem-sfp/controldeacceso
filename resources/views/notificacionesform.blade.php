@@ -8,21 +8,35 @@
                 <div class="card-header">{{ __('Listado de Usuarios') }}</div>
 
                 <div class="card-body">
-					<form action ="({ url('/notificaciones/save') )}" method="post">
+					<form action ="{{ url('/notificaciones/save') }}" method="post">
 						@csrf
-						<div class="form+group">
-							<label for="title"></label>
-							<input type="text" name="title" id="title">
-							
-							<label for="description"></label>
-							<textarea name="description" id="description" cols="30" rows="10"></textarea>
-							
-							<label for="type"></label>
-							<select name="type" id="type">
-								<option value="group">({ _('Grupo') }}</option>
-						
+						<div class="form-group">
+							<label for="title">{{ _('Titulo') }}</label>
+							<input type="text" class="form-control" name="title" id="title">
+						</div>
+						<div class="form-group">
+							<label for="description">{{ _('Descripcion') }}</label>
+							<textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="type">{{ _('Tipo de notificacion') }}</label>
+							<select name="type" class="form-control" id="type">
+								<option value="group">{{ _('Grupo') }}</option>
+								<option value="user">{{ _('Usuario') }}</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="notify _to">{{ _('Notificar a') }}</label>
+							<input type="text" class="form-control" name="notify_to">
+						</div>
+						<div class="form-group">
+							<label for="notify_to">{{ _('Expirar en:') }}</label>
+							<input type="text" class="form-control" name="expire_at">
+						</div>
+							<button type="submit" class="btn btn sucress"> {{ _("Guardar") }}</button>
+						</div>
 						</form>
-                        </div>
+					</div>
                 </div>
             </div>
         </div>

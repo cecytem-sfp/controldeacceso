@@ -35,8 +35,12 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	Route::get('/notificaciones','notificacionesController@listnotificaciones');
 	
+	Route::post('/notificaciones/save', 'notificacionesController@savenotificaciones');
+	
 	Route::get('/notificaciones/add', function (){
 		return view('notificacionesform');
+		
+	
 	
 	});
 	
