@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/users/list', 'UsersController@listUsers')
       ->name('userslist');
-
+});
 
     Route::get('/user/{id}', 'UsersController@userDetails')
       ->name('userdetails');
@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	Route::get('/notifications','Notifications@listNotifications');
 	
-	Route::post('/notification/add', function (){
+	Route::post('/notification/save', 'Notifications@savenotification');
+	
+	Route::get('/notifications/add', function (){
 		return view('notificationForm');
+	
 });
