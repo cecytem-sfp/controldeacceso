@@ -59,8 +59,10 @@ class NotificationsController extends Controller
         $receiver = DB::table('users')->where('id', $data['notify_to'])->first();
         $message = '';
         $status = true;
+        $data = array('subject' => $data['title'], 'message' => $data['description'] );
+
         try{
-            Mail::to($receiver->email)->send(new NotificationMail());
+            Mail::to($receiver->email)->send(new NotificationMail($data));
         } catch(\Exception $e){
             $message = $e->getMessage();
             $status = false;

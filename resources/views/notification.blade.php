@@ -13,6 +13,12 @@
                 </div>
 
                 <div class="card-body">
+                    @if ($errors->has('mail_deliver'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('mail_deliver') }}</strong>
+                        </span>
+                    @endif
+
                     @forelse($notifications as $notification)
                         <div class="row">
                             <div class="col">
