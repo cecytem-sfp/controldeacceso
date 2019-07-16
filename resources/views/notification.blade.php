@@ -7,8 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col align-middle">{{ __('Notificaciones') }}</div>
-                        <div class="col float-right"><a class="btn btn-primary" href="{{ url('notification/add') }}">{{ __('Nueva') }}</a></div>
+                        <div class="col align-middle">{{ __('messages.notifications') }}</div>
+                        <div class="col float-right"><a class="btn btn-primary" href="{{ url('notification/add') }}">{{ __('messages.new') }}</a></div>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@
                             <div class="col">{{ $notification->title }}</div>
                         </div>
                     @empty
-                      <li>{{ __('Aun no ha creado notificaciones') }}</li>
+                      <li>{{ __('messages.no_notifications') }}</li>
                     @endforelse
                 </div>
 

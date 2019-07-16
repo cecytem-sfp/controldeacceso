@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Agregar Notificacion') }}</div>
+                <div class="card-header">{{ __('messages.add_notification') }}</div>
 
                 <div class="card-body">
                     <form action="{{ url('/notification/save') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="title">{{ __('Titulo') }}</label>
+                            <label for="title">{{ __('messages.title') }}</label>
                             <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ old('title') }}" name="title" id="title">
                             @if ($errors->has('title'))
                                 <span class="invalid-feedback" role="alert">
@@ -20,7 +20,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="description">{{ __('Descripción') }}</label>
+                            <label for="description">{{ __('messages.description') }}</label>
                             <textarea name="description" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" cols="30" rows="10">
                                 {{ old('description') }}
                             </textarea>
@@ -31,10 +31,10 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="type">{{ __('Tipo de Notifiación') }}</label>
+                            <label for="type">{{ __('messages.notification_type') }}</label>
                             <select name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" id="type">
-                                <option value="group">{{ __('Grupo') }}</option>
-                                <option value="user">{{ __('Usuario') }}</option>
+                                <option value="group">{{ __('messages.group') }}</option>
+                                <option value="user">{{ __('messages.user') }}</option>
                             </select>
                             @if ($errors->has('type'))
                                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="notify_to">{{ __('Notificar a') }}</label>
+                            <label for="notify_to">{{ __('messages.notify_to') }}</label>
                             <input type="text" class="form-control{{ $errors->has('notify_to') ? ' is-invalid' : '' }}" name="notify_to" id="notify_to">
                             @if ($errors->has('notify_to'))
                                 <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="expire_at">{{ __('Expirar en:') }}</label>
+                            <label for="expire_at">{{ __('messages.expires_at') }}</label>
                             <input type="text" class="form-control{{ $errors->has('expire_at') ? ' is-invalid' : '' }}" value="{{ old('expire_at') }}" name="expire_at" id="expire_at">
                             @if ($errors->has('expire_at'))
                                 <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                                 </span>
                             @endif
                         </div>
-                            <button type="submit"class="btn btn-success" >{{ __("Guardar") }}</button>
+                            <button type="submit"class="btn btn-success" >{{ __("messages.save") }}</button>
                         </div>
                     </form>
                 </div>

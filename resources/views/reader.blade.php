@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">{{ __('messages.reader') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,20 +17,48 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
+
+                    <div class="form-group">
+                        <label for="cameras">{{ __('messages.select_camara') }}</label>
+                        <select id="cameras" class="form-control">
+                    </div>
+
+                    </select>
                     <video id="preview"></video>
 
                     <script type="text/javascript">
+                    var scanner;
+                    var cameras_container;
+                    var current = 1;
                         jQuery(document).ready(function(){
+
+                            jQuery("#cameras").on("change", function(){
+                                scanner.stop(cameras_container[current]);
+                                current = jQuery("#cameras").val();
+                                console.log(cameras_container, current)
+                                scanner.start(cameras_container[current]);
+                            });
+
                             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
                             scanner.addListener('scan', function (content) {
                                 saveRegister(content);
                             });
 
                             Instascan.Camera.getCameras().then(function (cameras) {
-                                console.log(cameras);
+                                cameras_container = cameras;
+                                console.log(cameras, cameras_container);
 
-                                if (cameras.length > 0) {
-                                    scanner.start(cameras[0]);
+                                if (cameras_container.length > 0) {
+                                    for (i = 0; i < cameras_container.length; i++){
+                                        name = cameras_container[i].name;
+                                        if(name == 'null'){
+                                            name = 'Camara ' + i;
+                                        }
+                                        jQuery("#cameras").append('<option value="' + i + '">' + name + '</option>')
+                                    }
+
+                                    scanner.start(cameras_container[1]);
+
                                 } else {
                                     console.error('No cameras found.');
                                 }

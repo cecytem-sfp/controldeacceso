@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', session('locale')) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,11 +41,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -56,17 +56,17 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/users/list') }}">
-                                        {{ __('Lista de Usuarios') }}
+                                        {{ __('messages.user_list') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ url('/notifications') }}">
-                                        {{ __('Notificaciones') }}
+                                        {{ __('messages.notifications') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('messages.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -75,6 +75,18 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownLang" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('messages.language') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLang">
+                                <a class="dropdown-item" href="{{ url('locale/es') }}">{{ __('messages.spanish') }}</a>
+                                <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('messages.english') }}</a>
+                                <a class="dropdown-item" href="{{ url('locale/mz') }}">{{ __('messages.mazahua') }}</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
