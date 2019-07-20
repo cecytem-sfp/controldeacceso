@@ -36,7 +36,7 @@
 
                   <div class="row">
                       <div class="col"></div>
-                      <div class="col"><a href="{{ url('/users/list') }}">{{ __('messages.back') }}</a></div>
+                      <div class="col"><a class="btn btn-primary" href="{{ url('/users/list') }}">{{ __('messages.back') }}</a></div>
                   </div>
                 </div>
             </div>

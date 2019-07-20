@@ -55,4 +55,7 @@ return [
     'control_number' => 'Control Number',
     'phone' => 'Phone',
     'back' => 'Back',
+
+    'created_by' => 'Created by',
+    'created_at' => 'Created at',
 ];

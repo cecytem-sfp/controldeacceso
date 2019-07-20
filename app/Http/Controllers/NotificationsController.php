@@ -12,10 +12,27 @@ use Illuminate\Support\Facades\Auth;
 class NotificationsController extends Controller
 {
     public function listNotifications(){
-        $notifications = DB::table('notificaciones')->get();
+        $notifications = array();
+        if(Auth::user()->permission == 1)
+            $notifications = DB::table('notificaciones')->where('expire_at', '>=', date('Y-m-d'))->get();
+        else
+            $notifications = DB::table('notificaciones')->where('expire_at', '>=', date('Y-m-d'))->where('notify_to', Auth::id())->get();
 
-        return view('notification', [ 'notifications' => $notifications]);
-      }
+        return view('notifications', [ 'notifications' => $notifications]);
+    }
+
+    public function getNotification($id){
+
+        $notification = DB::table('notificaciones')->find($id);
+
+        return view('notification', [ 'notification' => $notification]);
+    }
+
+    public function addNotification(){
+        $users = DB::table('users')->select('id', 'name', 'no_control')->where('activo', 1)->orderBy('name', 'desc')->get();
+
+        return view('notificationForm', [ 'users' => $users]);
+    }
 
     public function saveNotification(Request $request){
         $data = $request->all();

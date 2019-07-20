@@ -14,7 +14,6 @@
                         </div>
                     @endif
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 
@@ -57,10 +56,11 @@
                                         jQuery("#cameras").append('<option value="' + i + '">' + name + '</option>')
                                     }
 
-                                    scanner.start(cameras_container[1]);
+                                    scanner.start(cameras_container[0]);
 
                                 } else {
                                     console.error('No cameras found.');
+                                    navigator.vibrate(2000)
                                 }
 
                             }).catch(function (e) {
@@ -75,16 +75,20 @@
                             })
                             $.ajax(
                                 {
-                                    url: '{{ url('/registration') }}',
+                                    url: '{{ url('/register') }}',
                                     type: 'post',
                                     dataType: 'json',
                                     data: {id: values[0]}
                                 }
-                            ).done(function(data){
-                                beep();
-                                console.log(data);
-                                alert(data);
-                            });
+                            ).done(
+                                function(data){
+                                    navigator.vibrate(200)
+                                    beep();
+                                    console.log(data);
+                                }
+                            ).error(
+                                navigator.vibrate(2000)
+                            );
                         }
 
                         function beep() {

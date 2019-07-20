@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery("#expire_at").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: 0,
+            maxDate: '+1M'
+        });
+
+        jQuery("#notify_to").chosen();
+    });
+
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,7 +20,7 @@
                 <div class="card-header">{{ __('messages.add_notification') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ url('/notification/save') }}" method="post">
+                    <form action="{{ url('/notifications/save') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="title">{{ __('messages.title') }}</label>
@@ -44,7 +56,11 @@
                         </div>
                         <div class="form-group">
                             <label for="notify_to">{{ __('messages.notify_to') }}</label>
-                            <input type="text" class="form-control{{ $errors->has('notify_to') ? ' is-invalid' : '' }}" name="notify_to" id="notify_to">
+                            <select class="form-control{{ $errors->has('notify_to') ? ' is-invalid' : '' }}" name="notify_to" id="notify_to">
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->no_control . ' - ' . $user->name }}</option>
+                                @endforeach
+                            </select>
                             @if ($errors->has('notify_to'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('notify_to') }}</strong>

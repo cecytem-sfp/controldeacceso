@@ -36,13 +36,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/{id}', 'UsersController@userDetails')
       ->name('userdetails');
 
-    Route::post('/registration', 'HomeController@registration');
+    Route::post('/register', 'HomeController@register');
 
     Route::get('/notifications', 'NotificationsController@listNotifications');
 
-    Route::post('/notification/save', 'NotificationsController@saveNotification');
+    Route::post('/notifications/save', 'NotificationsController@saveNotification');
 
-    Route::get('/notification/add', function (){
-        return view('notificationForm');
-    });
+    Route::get('/notification/{id}', 'NotificationsController@getNotification');
+
+    Route::get('/notifications/add', 'NotificationsController@addNotification');
 });

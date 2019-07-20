@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Asistencia;
 use Validator;
@@ -28,7 +29,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function registration(Request $request){
+    public function register(Request $request){
 
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:users',
@@ -46,7 +47,9 @@ class HomeController extends Controller
 
           $asistencia->save();
 
-          return response()->json(['status' => true]);
+          $notifications = DB::table('notificaciones')->where('expire_at', '>=', date('Y-m-d'))->where('notify_to', $request->get('id'))->get();
+
+          return response()->json(['status' => true, 'notifications' => $notifications]);
 
     }
 }

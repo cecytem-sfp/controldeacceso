@@ -8,29 +8,19 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col align-middle">{{ __('messages.notifications') }}</div>
-                        <div class="col float-right"><a class="btn btn-primary" href="{{ url('notification/add') }}">{{ __('messages.new') }}</a></div>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    @if ($errors->has('mail_deliver'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('mail_deliver') }}</strong>
-                        </span>
-                    @endif
-
-                    @forelse($notifications as $notification)
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{ url('notification/' . $notification->id) }}">
-                                    {{ $notification->id }}
-                                </a>
-                            </div>
-                            <div class="col">{{ $notification->title }}</div>
-                        </div>
-                    @empty
-                      <li>{{ __('messages.no_notifications') }}</li>
-                    @endforelse
+                    <div class="row"><span class="col">{{ __('messages.title') }}</span><span class="col">{{ $notification->title }}</span></div>
+                    <div class="row"><span class="col">{{ __('messages.description') }}</span><span class="col">{{ $notification->description }}</span></div>
+                    <div class="row"><span class="col">{{ __('messages.expires_at') }}</span><span class="col">{{ $notification->expire_at }}</span></div>
+                    <div class="row"><span class="col">{{ __('messages.created_at') }}</span><span class="col">{{ $notification->date }}</span></div>
+                    <div class="row"><span class="col">{{ __('messages.created_by') }}</span><span class="col">{{ $notification->owner }}</span></div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col"><a class="btn btn-primary" href="{{ url('/notifications') }}">{{ __('messages.back') }}</a></div>
+                    </div>
                 </div>
 
             </div>
