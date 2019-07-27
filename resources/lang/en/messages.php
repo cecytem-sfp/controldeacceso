@@ -58,4 +58,9 @@ return [
 
     'created_by' => 'Created by',
     'created_at' => 'Created at',
+
+    'last_visits' => 'Your last visits',
+    'no_visits' => 'You do not have any visit yet',
+
+    'reader' => 'Scanner'
 ];

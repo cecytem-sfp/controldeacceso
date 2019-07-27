@@ -14,7 +14,19 @@
                         </div>
                     @endif
 
-                    {{ __('messages.welcome') }}
+                    <div class="row"><span class="col">{{ __('messages.welcome') }}</span></div>
+                    <div class="row"><span class="col">{{ __('messages.last_visits') }}</span></div>
+                    <div class="row">
+                        <span class="col">
+                            <ul>
+                                @forelse ($last_visits as $visit)
+                                    <li>{{ $visit->hora_registro }}</li>
+                                @empty
+                                    <li>{{ __('messages.no_visits') }}</li>
+                                @endforelse
+                            </ul>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,18 +80,19 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <img src="{{ asset('media/logo.png') }}" alt="" style="max-width:50vw">
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ url('/reader') }}">{{ __('messages.reader') }}</a>
+                    @auth
+                        <a href="{{ url('/home') }}">{{ __('messages.home') }}</a>
+                    @else
+                        <a href="{{ route('login') }}">{{ __('messages.login') }}</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">{{ __('messages.register') }}</a>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>

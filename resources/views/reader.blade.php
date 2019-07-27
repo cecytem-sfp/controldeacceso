@@ -34,7 +34,6 @@
                             jQuery("#cameras").on("change", function(){
                                 scanner.stop(cameras_container[current]);
                                 current = jQuery("#cameras").val();
-                                console.log(cameras_container, current)
                                 scanner.start(cameras_container[current]);
                             });
 
@@ -45,7 +44,7 @@
 
                             Instascan.Camera.getCameras().then(function (cameras) {
                                 cameras_container = cameras;
-                                console.log(cameras, cameras_container);
+
 
                                 if (cameras_container.length > 0) {
                                     for (i = 0; i < cameras_container.length; i++){
@@ -75,7 +74,7 @@
                             })
                             $.ajax(
                                 {
-                                    url: '{{ url('/register') }}',
+                                    url: '{{ url('/registration') }}',
                                     type: 'post',
                                     dataType: 'json',
                                     data: {id: values[0]}
@@ -84,9 +83,29 @@
                                 function(data){
                                     navigator.vibrate(200)
                                     beep();
-                                    console.log(data);
+                                    $(".notificationContainer").html("");
+
+                                    for (i in data.notifications) {
+                                        console.log(data.notifications[i]);
+                                        html = '<div class="toast" role="alert" data-delay="10000" aria-live="assertive" aria-atomic="true">\
+                                          <div class="toast-header">\
+                                            <strong class="mr-auto">' + data.notifications[i].title + '</strong>\
+                                            <small class="text-muted">' + data.notifications[i].date + '</small>\
+                                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">\
+                                              <span aria-hidden="true">&times;</span>\
+                                            </button>\
+                                          </div>\
+                                          <div class="toast-body">\
+                                            ' + data.notifications[i].description + '\
+                                          </div>\
+                                        </div>';
+
+                                        $(".notificationContainer").append(html);
+                                    }
+
+                                    $('.toast').toast('show');
                                 }
-                            ).error(
+                            ).fail(
                                 navigator.vibrate(2000)
                             );
                         }
@@ -144,6 +163,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="notificationContainer">
     </div>
 </div>
 @endsection

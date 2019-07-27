@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/{id}', 'UsersController@userDetails')
       ->name('userdetails');
 
-    Route::post('/register', 'HomeController@register');
+    Route::post('/registration', 'HomeController@registration');
 
     Route::get('/notifications', 'NotificationsController@listNotifications');
 

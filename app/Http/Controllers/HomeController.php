@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Asistencia;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,10 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $last_visits = DB::table('asistencia')->where('id_user', Auth::id())->latest('hora_registro')->limit(5)->get();
+
+        return view('home', ['last_visits' => $last_visits]);
     }
 
-    public function register(Request $request){
+    public function registration(Request $request){
 
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:users',
