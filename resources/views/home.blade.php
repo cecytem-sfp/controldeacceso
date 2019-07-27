@@ -13,7 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <div class="row">
+                        <span class="col">
+                            <a href="{{ url('/emergencycontact/add') }}" class="btn btn-success">{{ __('messages.contact_emergency') }}</a>
+                        </span>
+                    </div>
                     <div class="row"><span class="col">{{ __('messages.welcome') }}</span></div>
                     <div class="row"><span class="col">{{ __('messages.last_visits') }}</span></div>
                     <div class="row">

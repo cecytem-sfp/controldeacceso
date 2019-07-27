@@ -31,4 +31,12 @@ class UsersController extends Controller
 
         return view('userdetails', [ 'user' => $user]);
     }
+
+    public function emergencycontact(){
+        return view('emergencyContact');
+    }
+
+    public function saveEmergencyContact(Request $request){
+
+    }
 }

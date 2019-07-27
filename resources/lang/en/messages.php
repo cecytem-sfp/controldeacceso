@@ -62,5 +62,12 @@ return [
     'last_visits' => 'Your last visits',
     'no_visits' => 'You do not have any visit yet',
 
-    'reader' => 'Scanner'
+    'reader' => 'Scanner',
+    'contact_emergency'  => 'Agregar contacto de emergencia',
+
+    'register_user' => 'Register new user',
+    'name' => 'Name',
+    'confirm_password' => 'Confirm Password',
+    'permission' => 'Permissions',
+
 ];
