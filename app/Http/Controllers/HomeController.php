@@ -28,9 +28,11 @@ class HomeController extends Controller
     public function index()
     {
 
+        $emergency_contact = DB::table('contact_info')->where('id_user', Auth::id())->get();
+
         $last_visits = DB::table('asistencia')->where('id_user', Auth::id())->latest('hora_registro')->limit(5)->get();
 
-        return view('home', ['last_visits' => $last_visits]);
+        return view('home', ['last_visits' => $last_visits, 'emergency_contact' => $emergency_contact]);
     }
 
     public function registration(Request $request){

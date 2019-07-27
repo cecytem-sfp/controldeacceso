@@ -47,5 +47,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/notifications/add', 'NotificationsController@addNotification');
 
     Route::get('/emergencycontact/add', 'UsersController@emergencyContact');
-    Route::get('/emergencycontact/save', 'UsersController@saveEmergencyContact');
+    Route::post('/emergencycontact/save', 'UsersController@saveEmergencyContact')->name('saveEmergencyContact');;
 });

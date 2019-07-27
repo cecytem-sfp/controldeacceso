@@ -63,7 +63,9 @@ return [
     'no_visits' => 'You do not have any visit yet',
 
     'reader' => 'Scanner',
-    'contact_emergency'  => 'Agregar contacto de emergencia',
+    'emergency_contact'  => 'Emergency Contact',
+    'emergency_contact_add'  => 'Add Emergency Contact',
+    'no_emergency_contact' => 'There is no emergency contact registers, please add one',
 
     'register_user' => 'Register new user',
     'name' => 'Name',

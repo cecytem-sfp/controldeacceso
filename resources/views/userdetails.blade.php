@@ -41,6 +41,34 @@
                 </div>
             </div>
         </div>
+        <div class="alert alert-warning" role="alert">
+                <div class="row alert-heading"><h4 class="col">{{ __('messages.emergency_contact') }}</h4></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ __('messages.name') }}</th>
+                            <th>{{ __('messages.address') }}</th>
+                            <th>{{ __('messages.email') }}</th>
+                            <th>{{ __('messages.phone') }}</th>
+                        </tr>
+                    <thead>
+                    <tbody>
+                        @foreach ($emergency_contact as $contact)
+                                <tr>
+                                    <td>{{ $contact->name }}</td>
+                                    <td>{{ $contact->address }}</td>
+                                    <td>{{ $contact->email }}</td>
+                                    <td>{{ $contact->phone }}</td>
+                                </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @if(empty(($emergency_contact)))
+                    <div class="row">
+                        <span class="col md-12">{{ __('messages.no_emergency_contact') }}</span>
+                    </div>
+                @endif
+            </div>
     </div>
 </div>
 @endsection
